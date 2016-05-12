@@ -8,7 +8,13 @@ npm install -g nodeunit
 node tests.js
 ```
 
-### Usage:
+### Installation
+
+```
+bower install milestones.js
+```
+
+### Usage
 
 ```
 let milestones = new Milestones();
