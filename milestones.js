@@ -38,8 +38,8 @@ class Milestones {
     return this.registry[topic];
   }
 
-  when(topics) {
-    if (!Array.isArray(topics)) topics = [topics];
+  when() {
+    let topics = Array.prototype.slice.call(arguments, 0);
     return Promise.all(topics.map((topic) => this.getOrCreate(topic).reached()))
   }
 }

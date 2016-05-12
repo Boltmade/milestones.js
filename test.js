@@ -24,7 +24,7 @@ exports.testMultiple = function(test) {
   let milestones = new Milestones();
   milestones.register('m1', Promise.resolve(42));
   milestones.register('m2', Promise.resolve(43));
-  milestones.when(['m1', 'm2']).then((values) => {
+  milestones.when('m1', 'm2').then((values) => {
     test.equal(values[0], 42, 'm1 value is correct');
     test.equal(values[1], 43, 'm2 value is correct');
     test.done();
@@ -33,7 +33,7 @@ exports.testMultiple = function(test) {
 
 exports.testMultipleWhenBeforeRegister = function(test) {
   let milestones = new Milestones();
-  milestones.when(['m1', 'm2']).then((values) => {
+  milestones.when('m1', 'm2').then((values) => {
     test.equal(values[0], 42, 'm1 value is correct');
     test.equal(values[1], 43, 'm2 value is correct');
     test.done();
@@ -45,7 +45,7 @@ exports.testMultipleWhenBeforeRegister = function(test) {
 exports.testWhenInbetweenRegisters = function(test) {
   let milestones = new Milestones();
   milestones.register('m1', Promise.resolve(42));
-  milestones.when(['m1', 'm2']).then((values) => {
+  milestones.when('m1', 'm2').then((values) => {
     test.equal(values[0], 42, 'm1 value is correct');
     test.equal(values[1], 43, 'm2 value is correct');
     test.done();
@@ -79,7 +79,7 @@ exports.testSingleRejectBeforeWhen = function(test) {
 
 exports.testMultipleReject = function(test) {
   let milestones = new Milestones();
-  milestones.when(['m1', 'm2']).then(() => {
+  milestones.when('m1', 'm2').then(() => {
     test.ok(false, 'Rejected milestone did not resolve');
     test.done();
   }).catch((m1Reject) => {
@@ -92,7 +92,7 @@ exports.testMultipleReject = function(test) {
 
 exports.testMultipleReject2 = function(test) {
   let milestones = new Milestones();
-  milestones.when(['m1', 'm2']).then(() => {
+  milestones.when('m1', 'm2').then(() => {
     test.ok(false, 'Rejected milestone did not resolve');
     test.done();
   }).catch((m1Reject) => {
@@ -106,7 +106,7 @@ exports.testMultipleReject2 = function(test) {
 exports.testMultipleReject3 = function(test) {
   let milestones = new Milestones();
   milestones.register('m1', Promise.reject(42));
-  milestones.when(['m2', 'm1']).then(() => {
+  milestones.when('m2', 'm1').then(() => {
     test.ok(false, 'Rejected milestone did not resolve');
     test.done();
   }).catch((m1Reject) => {
