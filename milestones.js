@@ -29,8 +29,8 @@
       this.registry = {};
     }
 
-    register(topic, promise) {
-      return this.getOrCreate(topic).link(promise);
+    register(topic, resolution) {
+      return this.getOrCreate(topic).link(Promise.resolve(resolution));
     }
 
     getOrCreate(topic) {
