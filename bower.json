@@ -1,7 +1,7 @@
 {
   "name": "milestones.js",
   "description": "",
-  "main": "milestones.js",
+  "main": "bower-dist/milestones.js",
   "authors": [
     "James Blashill <james@blashill.com>"
   ],
